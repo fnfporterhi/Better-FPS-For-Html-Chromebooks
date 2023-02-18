@@ -14,21 +14,18 @@ import openfl.events.Event;
 var game:FlxGame;
 //optimize this fuckin shit
 
-#if switch
-   apply();
+// Disable mouse smoothing for better performance
+Mouse.setNativeCursor(true);
+
+// Disable debugging information for better performance
+#if debug
+  debug = false;
 #end
 
-private function apply():Void
-{
-  #if !html5
-	  	framerate = 100;
-  #else
-       framerate = 60;
-   #end 
+// Set the frame rate to a lower value for better performance
+openfl.Lib.current.stage.frameRate = 30;
 
-  //return fpsCounter.currentFPS; This Is For Kade Engine
-  //return openfl.Lib.current.stage.frameRate; 
-  //openfl.Lib.current.stage.frameRate = cap; if options are in your game
+//inprove overall gameplay
+FlxG.fixedTimestep = false;
 
-  var framerate:Int = 0;
- } 
+} 
